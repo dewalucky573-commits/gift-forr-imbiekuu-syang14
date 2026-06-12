@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Gaya tambahan khusus agar tombol foto 4 terlihat tidak aktif dan tidak bisa diklik */
         .disabled-memory {
             opacity: 0.6;
             cursor: not-allowed !important;
@@ -63,7 +62,7 @@
             </div>
             <p id="daysCounter">Menghitung hari...</p>
 
-            <div id="heartCore">
+            <div id="heartCore" onclick="bukaModalMandiri('letter')">
                 <div class="heart-glow"></div>
                 <div class="heart-content">
                     <h2>❤️</h2>
@@ -72,42 +71,42 @@
             </div>
 
             <div class="orbit orbit1">
-                <button class="memory-item" data-target="photo1">📸 Foto 1</button>
+                <button class="memory-item" onclick="bukaModalMandiri('photo1')">📸 Foto 1</button>
             </div>
 
             <div class="orbit orbit2">
-                <button class="memory-item" data-target="photo2">📸 Foto 2</button>
+                <button class="memory-item" onclick="bukaModalMandiri('photo2')">📸 Foto 2</button>
             </div>
 
             <div class="orbit orbit3">
-                <button class="memory-item" data-target="photo3">📸 Foto 3</button>
+                <button class="memory-item" onclick="bukaModalMandiri('photo3')">📸 Foto 3</button>
             </div>
 
             <div class="orbit orbit4">
-                <button class="memory-item disabled-memory" data-target="photo4" disabled>🔒 Foto 4</button>
+                <button class="memory-item disabled-memory" disabled>🔒 Foto 4</button>
             </div>
 
             <div class="orbit orbit5">
-                <button class="memory-item" data-target="photo5">📸 Foto 5</button>
+                <button class="memory-item" onclick="bukaModalMandiri('photo5')">📸 Foto 5</button>
             </div>
 
             <div class="orbit orbit6">
-                <button class="memory-item" data-target="letter">💌 Surat</button>
+                <button class="memory-item" onclick="bukaModalMandiri('letter')">💌 Surat</button>
             </div>
 
             <div class="orbit orbit7">
-                <button class="memory-item" data-target="song">🎵 Lagu Kita</button>
+                <button class="memory-item" onclick="bukaModalMandiri('song')">🎵 Lagu Kita</button>
             </div>
 
             <div class="orbit orbit8">
-                <button class="memory-item" data-target="favorite">🌸 Favorit</button>
+                <button class="memory-item" onclick="bukaModalMandiri('favorite')">🌸 Favorit</button>
             </div>
         </div>
     </section>
 
-    <div id="modal" class="hidden">
-        <div class="modal-content">
-            <button id="closeModal" class="close-btn">✖</button>
+    <div id="modal" class="hidden" style="z-index: 9999; position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; padding: 20px;">
+        <div class="modal-content" style="background: white; padding: 20px; border-radius: 20px; max-width: 450px; width: 100%; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <button id="closeModal" class="close-btn" onclick="tutupModalMandiri()" style="position: absolute; top: 10px; right: 15px; font-size: 20px; border: none; background: none; cursor: pointer;">✖</button>
             <div id="modalBody"></div>
         </div>
     </div>
@@ -134,57 +133,103 @@
     <div id="memoryTemplates" class="hidden">
         
         <template id="photo1">
-            <img src="foto1.jpg" class="memory-photo">
-            <p>aku suka banget deh kalo kamu meluk atau ngelakuin sesuatu ke bucket yang aku kasih ke kamu,wkwkwk aku ngerasa kaya aku yang dipeluk anjay</p>
+            <img src="foto1.jpg" class="memory-photo" style="width:100%; border-radius:10px; margin-bottom:10px;">
+            <p style="color:#4a4a4a; line-height:1.4;">aku suka banget deh kalo kamu meluk atau ngelakuin sesuatu ke bucket yang aku kasih ke kamu,wkwkwk aku ngerasa kaya aku yang dipeluk anjay</p>
         </template>
 
         <template id="photo2">
-            <img src="foto2.jpg" class="memory-photo">
-            <p>kaya udah lama aja yaa?perasaan baru kemaren yaa wkwkwk makasih yaa Udha ngasih aku bucket,aku bakal ngehargain dan simpen bunga pemberin kamu sayang💗🥰</p>
+            <img src="foto2.jpg" class="memory-photo" style="width:100%; border-radius:10px; margin-bottom:10px;">
+            <p style="color:#4a4a4a; line-height:1.4;">kaya udah lama aja yaa?perasaan baru kemaren yaa wkwkwk makasih yaa Udha ngasih aku bucket,aku bakal ngehargain dan simpen bunga pemberin kamu sayang💗🥰</p>
         </template>
 
         <template id="photo3">
-            <img src="foto3.jpg" class="memory-photo">
-            <p>inii Poto paling lucukk kamuu aku salting terus liatnyaa</p>
+            <img src="foto3.jpg" class="memory-photo" style="width:100%; border-radius:10px; margin-bottom:10px;">
+            <p style="color:#4a4a4a; line-height:1.4;">inii Poto paling lucukk kamuu aku salting terus liatnyaa</p>
         </template>
 
         <template id="photo4">
-            <img src="foto4.jpg" class="memory-photo">
-            <p>kamu masih inget kann jadian kita??aku kangen deh pas aku nembak kamu lucu ajaa gitu aku ngingetnya apalagi kamu sampe nerima aku aku ganyangka kamu bisa Nerima aku sengg hwhe</p>
+            <img src="foto4.jpg" class="memory-photo" style="width:100%; border-radius:10px; margin-bottom:10px;">
+            <p style="color:#4a4a4a; line-height:1.4;">kamu masih inget kann jadian kita??aku kangen deh pas aku nembak kamu lucu ajaa gitu aku ngingetnya apalagi kamu sampe nerima aku aku ganyangka kamu bisa Nerima aku sengg hwhe</p>
         </template>
 
         <template id="photo5">
-            <img src="foto5.jpg" class="memory-photo">
-            <p>Liatt seng anak anak kita nungguin lohh. Udah punya 5 anak ajaa yaa 🤣❤️</p>
+            <img src="foto5.jpg" class="memory-photo" style="width:100%; border-radius:10px; margin-bottom:10px;">
+            <p style="color:#4a4a4a; line-height:1.4;">Liatt seng anak anak kita nungguin lohh. Udha punya 5 anak ajaa yaa 🤣❤️</p>
         </template>
 
         <template id="letter">
-            <h2>💌 Untuk Imbi Sayang</h2>
-            <p style="text-align: left; line-height: 1.6;">happy graduation juga ya imbi sayang💗💗maap yak aku ngucapinnya sekarang tadi juga luntur ucapannya 😢😢aku engga nyangka kamu effort banget kalo sama aku seng Sukak dehh🤗🤗🤭💗😻🥰kamu juga ya semoga nanti disono temen temen aku asik asik kalau misalnya kamu di jakarta sehat sehat ya seng kalo di 14 juga sehat sehat PB juga sehat sehat pokonya sehat sehat deh wkwkwkwk jangan lupain aku ya seng jaga pola makan kamu jangan makan mie Mulu makan yang sehat sehat Ama jangan lupa beribadah seng dimanapun kita berada,aku juga pasti bakal kangen sama kamu seng setiap hari malah aku pikiran kamu mulu💗🤗, intinya makasih ya seng plis sama aku terus kecintaan nih wkwkwkwk😜</p>
+            <h2 style="font-family:'Pacifico', cursive; color:#ff4d6d; font-size:20px; margin-bottom:10px;">💌 Untuk Imbi Sayang</h2>
+            <p style="text-align: left; line-height: 1.6; color:#4a4a4a; max-height:300px; overflow-y:auto; padding-right:5px;">happy graduation juga ya imbi sayang💗💗maap yak aku ngucapinnya sekarang tadi juga luntur ucapannya 😢😢aku engga nyangka kamu effort banget kalo sama aku seng Sukak dehh🤗🤗🤭💗😻🥰kamu juga ya semoga nanti disono temen temen aku asik asik kalau misalnya kamu di jakarta sehat sehat ya seng kalo di 14 juga sehat sehat PB juga sehat sehat pokonya sehat sehat deh wkwkwkwk jangan lupain aku ya seng jaga pola makan kamu jangan makan mie Mulu makan yang sehat sehat Ama jangan lupa beribadah seng dimanapun kita berada,aku juga pasti bakal kangen sama kamu seng setiap hari malah aku pikiran kamu mulu💗🤗, intinya makasih ya seng plis sama aku terus kecintaan nih wkwkwkwk😜</p>
         </template>
 
         <template id="song">
-            <h2>🎵 Akad - Payung Teduh</h2>
-            <p>Ini lagu kebangsaan kitaa ya seng ❤️ Pas aku bawain lagu ini pasti keinget kamu muluu.</p>
-            <a href="https://open.spotify.com/embed/track/6g0GzGZ606mZ97WpXorDGl?utm_source=generator" target="_blank" class="spotify-btn">Buka Spotify</a>
+            <h2 style="color:#ff4d6d; font-size:18px; margin-bottom:10px;">🎵 Akad - Payung Teduh</h2>
+            <p style="margin-bottom:15px; color:#4a4a4a;">Ini lagu kebangsaan kitaa ya seng ❤️ Pas aku bawain lagu ini pasti keinget kamu muluu.</p>
+            <a href="https://open.spotify.com/embed/track/6g0GzGZ606mZ97WpXorDGl?utm_source=generator" target="_blank" style="background:#1DB954; color:white; padding:8px 15px; border-radius:20px; text-decoration:none; font-weight:bold; display:inline-block;">Buka Spotify</a>
+        </template>
+
+        <template id="favorite">
+            <h2 style="color:#ff4d6d; font-size:18px; margin-bottom:10px;">🌸 Hal Favorit</h2>
+            <p style="color:#4a4a4a;">Semua hal yang ada di diri kamu adalah favorit aku, seng! Selamanya ❤️</p>
         </template>
 
     </div>
 
     <script>
-        // Memastikan logika PIN 2205 dan petunjuk berjalan mulus di script bawaan templat
+        // Fungsi Paksa Buka Jendela Foto/Surat secara Mandiri
+        function bukaModalMandiri(templateId) {
+            const template = document.getElementById(templateId);
+            const modal = document.getElementById("modal");
+            const modalBody = document.getElementById("modalBody");
+            
+            if (template && modal && modalBody) {
+                // Ambil isi template dan masukkan ke dalam kotak modal
+                const clone = template.content.cloneNode(true);
+                modalBody.innerHTML = "";
+                modalBody.appendChild(clone);
+                
+                // Paksa tampilkan modal di layar paling atas
+                modal.style.setProperty("display", "flex", "important");
+                modal.classList.remove("hidden");
+                
+                // Tambahkan hitungan kemajuan secara manual biar angka progress bertambah
+                updateAngkaProgressMandiri();
+            }
+        }
+
+        function tutupModalMandiri() {
+            const modal = document.getElementById("modal");
+            if (modal) {
+                modal.style.setProperty("display", "none", "important");
+                modal.classList.add("hidden");
+            }
+        }
+
+        // Kumpulan pencatatan kenangan yang sudah diklik
+        let listKenangan Terbuka = new Set();
+        function updateAngkaProgressMandiri() {
+            const txt = document.getElementById("progressText");
+            if (txt) {
+                // Maksimal 8 kenangan
+                let currentCount = parseInt(txt.innerText.split("/")[0].trim()) || 0;
+                if (currentCount < 7) { 
+                    currentCount++;
+                    txt.innerText = currentCount + " / 8";
+                }
+            }
+        }
+
+        // Logika Pengaman PIN 2205
         document.addEventListener("DOMContentLoaded", function() {
             const checkBtn = document.getElementById("checkPinBtn");
             const pinInput = document.getElementById("pinInput");
             const pinMessage = document.getElementById("pinMessage");
 
             if (checkBtn && pinInput) {
-                // Kita override/timpa fungsi klik bawaan script.js khusus untuk validasi PIN 2205
                 checkBtn.addEventListener("click", function(e) {
                     const userPin = pinInput.value.trim();
                     if (userPin !== "2205" && userPin !== "") {
                         pinMessage.textContent = "Ups! Password-nya salah 🤭 Petunjuk: Tanggal jadian kita!";
-                        // Menghentikan fungsi bawaan script.js agar tidak lolos masuk kalau salah
                         e.stopImmediatePropagation(); 
                     } else if (userPin === "2205") {
                         pinMessage.textContent = "";
